@@ -41,4 +41,4 @@ for response in symptoms_tweets:
 # Change this list of dictionaries into a dataframe
 tweets = pd.DataFrame(result)
 
-tweets.to_csv('./tweet_data/2020/feb1_7.csv', index = False)
+tweets.to_csv('./tweet_data/2020/feb8_14.csv', index = False)
