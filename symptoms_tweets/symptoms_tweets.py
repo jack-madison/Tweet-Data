@@ -3,6 +3,7 @@ import numpy as np
 import time
 import tweepy
 import requests
+import math
 
 # If this code has been downloaded from github, please create a new Python file called
 # twitter_authentication containing bearer_token = "INSERT YOUR BEARER TOKEN HERE" in the
@@ -93,5 +94,28 @@ tweets_location = pd.merge(tweets, df_locations, how='left', on='tweet_location_
 tweets_location = tweets_location[tweets_location['centroid_lon'].notna()]
 tweets_location = tweets_location[(tweets_location['place_type'] != 'admin') & (tweets_location['place_type'] != 'country')]
 
+# Reset the index of the tweets_location dataframe
+tweets_location = tweets_location.reset_index(drop=True)
 
+# Read in the municipality list
+municipalities = pd.read_excel('./symptoms_tweets/mun_list.xlsx')
 
+# Create a list of the municipality coordinates
+municipality_coordinates = [(x,y) for x,y in zip(municipalities['mun_X'] , municipalities['mun_Y'])]
+
+# Create an empty column for the x and y coordinates for the closest municipality to each tweet location
+tweets_location['mun_X'] = np.nan
+tweets_location['mun_Y'] = np.nan
+
+# For each tweet, find the closest lat and lon pair and then write that pair to the mun_X and mun_Y variables
+for x in range(len(tweets_location)):
+    closest = min(municipality_coordinates, key=lambda point: math.hypot(tweets_location['centroid_lat'][x]-point[1], tweets_location['centroid_lon'][x]-point[0]))
+    tweets_location['mun_X'][x] = closest[0]
+    tweets_location['mun_Y'][x] = closest[1]
+    x
+
+# Merge the municipality info with the tweet info
+tweets_location = pd.merge(tweets_location, municipalities, how = 'left', on = ['mun_X', 'mun_Y'])
+
+# Output to CSV
+tweets_location.to_csv('./symptoms_tweets/symptoms_tweets_raw.csv', index = False)
