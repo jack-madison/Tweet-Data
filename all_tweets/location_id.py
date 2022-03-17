@@ -54,3 +54,4 @@ for x in locations:
 # Turn the dictionary into a dataframe
 df_locations = pd.DataFrame(location_dict)
 
+df_locations.to_csv('./all_tweets/loactions.csv', index = False)
