@@ -12,21 +12,21 @@ from twitter_authentication import bearer_token
 
 client = tweepy.Client(bearer_token, wait_on_rate_limit=True)
 
-symptoms_tweets = []
+pollen_tweets = []
 
 for response in tweepy.Paginator(client.search_all_tweets, 
-                                query = '-is:retweet -is:nullcast has:geo place_country:JP',
+                                query = '((花粉) OR (花粉症) OR (スギ花粉)) -is:retweet -is:nullcast has:geo place_country:JP',
                                 tweet_fields = ['author_id', 'created_at', 'geo', 'id', 'lang', 'public_metrics', 'source', 'text'],
                                 start_time = '2006-03-22T00:00:00+09:00',
                                 end_time = '2022-01-01T00:00:00+09:00',
                                 max_results=500):
     time.sleep(1)
-    symptoms_tweets.append(response)
+    pollen_tweets.append(response)
 
 result = []
 
 # Loop through each response object
-for response in symptoms_tweets:
+for response in pollen_tweets:
     for tweet in response.data:
         try:
             # Put all of the information we want to keep in a single dictionary for each tweet
@@ -38,11 +38,28 @@ for response in symptoms_tweets:
                     })
         except TypeError:
             print("Type Error")
+        except KeyError:
+            print("Key Error")
 
 # Change this list of dictionaries into a dataframe
 tweets = pd.DataFrame(result)
 
-# RESUME HERE
+# Save the tweets as a CSV
+tweets.to_csv('./pollen_tweets/pollen_tweets.csv', index = False)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Extract the unique location IDs
 locations = tweets['tweet_location_id'].unique().tolist()
@@ -118,4 +135,4 @@ for x in range(len(tweets_location)):
 tweets_location = pd.merge(tweets_location, municipalities, how = 'left', on = ['mun_X', 'mun_Y'])
 
 # Output to CSV
-tweets_location.to_csv('./symptoms_tweets/symptoms_tweets_raw.csv', index = False)
+tweets_location.to_csv('./pollen_tweets/pollen_tweets_with_locations.csv', index = False)
