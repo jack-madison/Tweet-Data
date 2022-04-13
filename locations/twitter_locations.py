@@ -70,3 +70,36 @@ locations = locations.append(tweet_location_df)
 
 # Save the locations df
 locations.to_csv('./locations/locations.csv', index = False)
+
+# Merge the locations and tweets dataframes
+tweets_location = pd.merge(tweets, locations, how='left', on='tweet_location_id')
+
+# Filter the new tweets data to not include tweets that lack a location lat and lon or if the location is at the prefecture or country level
+tweets_location = tweets_location[tweets_location['centroid_lon'].notna()]
+tweets_location = tweets_location[(tweets_location['place_type'] != 'admin') & (tweets_location['place_type'] != 'country')]
+
+# Reset the index of the tweets_location dataframe
+tweets_location = tweets_location.reset_index(drop=True)
+
+# Read in the municipality list
+municipalities = pd.read_excel('./locations/mun_list.xlsx')
+
+# Create a list of the municipality coordinates
+municipality_coordinates = [(x,y) for x,y in zip(municipalities['mun_X'] , municipalities['mun_Y'])]
+
+# Create an empty column for the x and y coordinates for the closest municipality to each tweet location
+tweets_location['mun_X'] = np.nan
+tweets_location['mun_Y'] = np.nan
+
+# For each tweet, find the closest lat and lon pair and then write that pair to the mun_X and mun_Y variables
+for x in range(len(tweets_location)):
+    closest = min(municipality_coordinates, key=lambda point: math.hypot(tweets_location['centroid_lat'][x]-point[1], tweets_location['centroid_lon'][x]-point[0]))
+    tweets_location['mun_X'][x] = closest[0]
+    tweets_location['mun_Y'][x] = closest[1]
+    x
+
+# Merge the municipality info with the tweet info
+tweets_location = pd.merge(tweets_location, municipalities, how = 'left', on = ['mun_X', 'mun_Y'])
+
+# Output to CSV
+tweets_location.to_csv('./pollen_tweets/pollen_tweets_with_location.csv', index = False)
