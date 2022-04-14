@@ -4,19 +4,19 @@
 import pandas as pd
 import numpy as np
 
-apr1_7 = pd.read_csv('./all_tweets/tweet_data/2020/apr1_7.csv')
-apr8_14 = pd.read_csv('./all_tweets/tweet_data/2020/apr8_14.csv')
-apr15_21 = pd.read_csv('./all_tweets/tweet_data/2020/apr15_21.csv')
-apr22_30 = pd.read_csv('./all_tweets/tweet_data/2020/apr21_30.csv')
+may1_7 = pd.read_csv('./all_tweets/tweet_data/2020/may1_7.csv')
+may8_14 = pd.read_csv('./all_tweets/tweet_data/2020/may8_14.csv')
+may15_21 = pd.read_csv('./all_tweets/tweet_data/2020/may15_21.csv')
+may22_31 = pd.read_csv('./all_tweets/tweet_data/2020/may22_31.csv')
 
-april = apr1_7.append(apr8_14)
-april = april.append(apr15_21)
-april = april.append(apr22_30)
+may = may1_7.append(may8_14)
+may = may.append(may15_21)
+may = may.append(may22_31)
 
-april = april.drop_duplicates()
+may = may.drop_duplicates()
 
-april = april.sort_values(by = 'tweet_created_at')
+may = may.sort_values(by = 'tweet_created_at')
 
-april = april.reset_index(drop = True)
+may = may.reset_index(drop = True)
 
-april.to_csv('./all_tweets/tweet_data/2020/apr_2020.csv')
+may.to_csv('./all_tweets/tweet_data/2020/05_2020.csv')
