@@ -63,7 +63,7 @@ for response in pollen_tweets_no_location:
     for i in response.data:
         try:
             # Put all of the information we want to keep in a single dictionary for each tweet
-            result.append({
+            result_no_location.append({
                     'end': i['end'],
                     'start': i['start'],
                     'tweet_count': i['tweet_count']
@@ -76,5 +76,16 @@ for response in pollen_tweets_no_location:
 # Change this list of dictionaries into a dataframe
 tweets_no_location = pd.DataFrame(result_no_location)
 
+all_tweets = pd.merge(tweets, tweets_no_location, how = 'right', on = ['end', 'start'])
+
+all_tweets = all_tweets.rename(columns={'end': 'end', 'start': 'start', 'tweet_count_x': 'geotagged_tweets', 'tweet_count_y': 'all_tweets'})
+
+all_tweets.to_csv('./pollen_tweets/pollen_tweet_counts.csv', index = False)
 
 
+
+tweets = pd.read_csv('./pollen_tweets/pollen_tweets.csv')
+
+tweets = tweets.drop_duplicates()
+
+tweets.to_csv('./pollen_tweets/pollen_tweets_drop_dup.csv', index = False)

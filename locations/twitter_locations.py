@@ -8,7 +8,7 @@ import math
 # If this code has been downloaded from github, please create a new Python file called
 # twitter_authentication containing bearer_token = "INSERT YOUR BEARER TOKEN HERE" in the
 # same directory as this Python file 
-from twitter_authentication import bearer_token
+from twitter_authentication import bearer_token_1
 
 # Read in the CSV of tweets
 tweets = pd.read_csv('./pollen_tweets/pollen_tweets.csv')
@@ -26,7 +26,7 @@ location_ids = locations['tweet_location_id'].unique().tolist()
 tweet_location_ids = list(set(tweet_location_ids) - set(location_ids))
 
 # Specify the barer token for the geo location id search
-headers = {"Authorization": "Bearer {}".format(bearer_token)}
+headers = {"Authorization": "Bearer {}".format(bearer_token_1)}
 
 # Create an empty dictionary
 location_dict = []
