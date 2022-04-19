@@ -14,8 +14,8 @@ symptoms_tweets = []
 for response in tweepy.Paginator(client.search_all_tweets, 
                                 query = '-is:retweet -is:nullcast has:geo place_country:JP',
                                 tweet_fields = ['author_id', 'created_at', 'geo', 'id', 'lang', 'public_metrics', 'source', 'text'],
-                                start_time = '2019-04-01T00:00:00+09:00',
-                                end_time = '2019-04-07T23:59:59+09:00',
+                                start_time = '2019-04-15T00:00:00+09:00',
+                                end_time = '2019-04-21T23:59:59+09:00',
                                 max_results=500):
     time.sleep(1)
     symptoms_tweets.append(response)
@@ -38,4 +38,4 @@ for response in symptoms_tweets:
 # Change this list of dictionaries into a dataframe
 tweets = pd.DataFrame(result)
 
-tweets.to_csv('./all_tweets/tweet_data/2019/apr1_7.csv', index = False)
+tweets.to_csv('./all_tweets/tweet_data/2019/apr15_21.csv', index = False)
