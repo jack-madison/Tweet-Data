@@ -15,7 +15,7 @@ from twitter_authentication import bearer_token_9
 from twitter_authentication import bearer_token_10
 
 # Read in the CSV of tweets
-tweets = pd.read_csv('./all_tweets/tweet_data/2019/03_2019.csv')
+tweets = pd.read_csv('./all_tweets/tweet_data/2019/04_2019.csv')
 
 # Read in the dataframe of locations already collected
 locations = pd.read_csv('./locations/locations.csv')
@@ -28,6 +28,9 @@ location_ids = locations['tweet_location_id'].unique().tolist()
 
 # Remove the location_ids that have already been collected from the tweet_location_ids list
 tweet_location_ids = list(set(tweet_location_ids) - set(location_ids))
+
+# Check to see how many unique ids there are
+len(tweet_location_ids)
 
 # Initialize the counter for the barer tokens
 token_no = 0
