@@ -5,8 +5,9 @@ from asari.api import Sonar
 sonar = Sonar()
 
 # The following strings are taken from the twitter data feb_2020 in the tweet_data/2020 folder
-sonar.ping(text="危機感がない奴が多過ぎて泣けてくる・・")
-sonar.ping(text="A happy new month!!")
-sonar.ping(text="日生さやま台 シェパードが徘徊中　注意")
-sonar.ping(text="#スカイツリー 今夜のスカイツリー光ぐ普段と違ってスゴーく色かかんってるw https://t.co/5o9cJsANfr")
-sonar.ping(text="@Uber81678071 引っ越しですか？ ようこそ、渋谷区へψ(｀∇´)ψ")
+sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…")
+sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…😵")
+sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…(´+ω+｀)")
+sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…。https://twitter.com/terunekootenki/status/1524699067569229825?s=20&t=OC7RWlnr7ifTa2ExRZY-WQ")
+sonar.ping(text="なんだかしんどいと思ったら気圧のせいか… @jckmadison")
+
