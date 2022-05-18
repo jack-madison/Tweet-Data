@@ -11,8 +11,6 @@ from twitter_authentication import bearer_token_5
 from twitter_authentication import bearer_token_6
 from twitter_authentication import bearer_token_7
 from twitter_authentication import bearer_token_8
-from twitter_authentication import bearer_token_9
-from twitter_authentication import bearer_token_10
 
 # Read in the CSV of tweets
 tweets = pd.read_csv('./all_tweets/tweet_data/2019/06_2019.csv')
@@ -36,14 +34,14 @@ len(tweet_location_ids)
 token_no = 0
 
 # Create a list of barer tokens
-bearer_tokens = [bearer_token_1, bearer_token_2, bearer_token_3, bearer_token_4, bearer_token_5, bearer_token_6, bearer_token_7, bearer_token_8, bearer_token_9, bearer_token_10]
+bearer_tokens = [bearer_token_1, bearer_token_2, bearer_token_3, bearer_token_4, bearer_token_5, bearer_token_6, bearer_token_7, bearer_token_8]
 
 # Create an empty dictionary
 location_dict = []
 
 # Pull the location info from the twitter API and write it to the location_dict dictionary
 for x in tweet_location_ids:
-    if token_no > 9: token_no = 0
+    if token_no > 7: token_no = 0
     try:
         url = "https://api.twitter.com/1.1/geo/id/" + str(x) + ".json"
         headers = {"Authorization": "Bearer {}".format(bearer_tokens[token_no])}
@@ -79,7 +77,7 @@ for x in tweet_location_ids:
         time.sleep(60)
         pass
     token_no = token_no + 1
-    time.sleep(1.6)
+    time.sleep(2)
 
 # Turn the dictionary into a dataframe
 tweet_location_df = pd.DataFrame(location_dict)
