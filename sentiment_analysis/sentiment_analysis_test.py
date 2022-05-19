@@ -32,3 +32,41 @@ sonar.ping(text="雨が止んで良かったね(^^)")
 sonar.ping(text="@mika_pollen_b 雨が止んで良かったね。")
 sonar.ping(text="雨が止んで良かったね https://twitter.com/Yahoo_weather/status/1525579771723542528?s=20&t=DnG8A50srEIOaZHZG-ubig")
 sonar.ping(text="@mika_pollen_b 雨が止んで良かったね😊(^^) https://twitter.com/Yahoo_weather/status/1525579771723542528?s=20&t=DnG8A50srEIOaZHZG-ubig")
+
+sonar.ping(text="⛰🏫⛰⛰🚶🏻‍♀️🐗⛰⛰⛰⛰⛰")
+sonar.ping(text="_(:3 」∠)__(┐「ε:)__(:3 」∠)_")
+sonar.ping(text="@mika_pollen_b @mika_pollen_b @mika_pollen_b")
+sonar.ping(text="_(:3 」∠)__(┐「ε:)__(:3 」∠)_。 https://twitter.com/mika_pollen_a/status/1526732089726742528?s=20&t=GmwN2Q7f5jj7FMh5bufGFw")
+sonar.ping(text="@mika_pollen_b @mika_pollen_b @mika_pollen_b ⛰🏫⛰⛰🚶🏻‍♀️🐗⛰⛰⛰⛰⛰ _(:3 」∠)__(┐「ε:)__(:3 」∠)_ https://twitter.com/mika_pollen_a/status/1526732089726742528?s=20&t=GmwN2Q7f5jj7FMh5bufGFw")
+
+sonar.ping(text="疲れた。泣きそう。もう消えたい。")
+sonar.ping(text="疲れた。泣きそう。もう消えたい。😭😭")
+sonar.ping(text="疲れた。泣きそう。もう消えたい。( ；∀；)")
+sonar.ping(text="@mika_pollen_b 疲れた。泣きそう。もう消えたい。")
+sonar.ping(text="疲れた。泣きそう。もう消えたい https://twitter.com/mika_pollen_a/status/1526735493815496705?s=20&t=GmwN2Q7f5jj7FMh5bufGFw")
+sonar.ping(text="@mika_pollen_b 疲れた。泣きそう。もう消えたい。😭😭( ；∀；) https://twitter.com/mika_pollen_a/status/1526735493815496705?s=20&t=GmwN2Q7f5jj7FMh5bufGFw")
+
+sonar.ping(text="またしんどくなるんじゃ無いかと思うと出かけるの憂鬱だ…。")
+sonar.ping(text="またしんどくなるんじゃ無いかと思うと出かけるの憂鬱だ…。😓😓")
+sonar.ping(text="またしんどくなるんじゃ無いかと思うと出かけるの憂鬱だ…。(/ _ ; )")
+sonar.ping(text="@mika_pollen_b またしんどくなるんじゃ無いかと思うと出かけるの憂鬱だ…。")
+sonar.ping(text="またしんどくなるんじゃ無いかと思うと出かけるの憂鬱だ… https://twitter.com/mika_pollen_a/status/1526741304205783040?s=20&t=GmwN2Q7f5jj7FMh5bufGFw")
+sonar.ping(text="@mika_pollen_b またしんどくなるんじゃ無いかと思うと出かけるの憂鬱だ…。😓😓(/ _ ; ) https://twitter.com/mika_pollen_a/status/1526741304205783040?s=20&t=GmwN2Q7f5jj7FMh5bufGFw")
+
+sonar.ping(text="やったー合格したー")
+sonar.ping(text="やったー合格したー！！！！！")
+sonar.ping(text="やったー合格したー？？？？？")
+
+sonar.ping(text="えーん。憂鬱だー")
+sonar.ping(text="えーん。憂鬱だー！！！！！")
+sonar.ping(text="えーん。憂鬱だー？？？？？")
+
+sonar.ping(text="")
+
+
+
+
+
+
+
+
