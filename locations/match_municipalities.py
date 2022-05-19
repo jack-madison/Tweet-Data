@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import math
 
+from pyparsing import col
+
 # Read in the tweet location list
 locations = pd.read_csv('./locations/locations.csv')
 
