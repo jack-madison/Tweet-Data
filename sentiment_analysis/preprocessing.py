@@ -33,4 +33,3 @@ tweets = tweets[(tweets['place_type'] != 'admin') & (tweets['place_type'] != 'co
 # Output the dataframe to CSV
 tweets.to_csv('./all_tweets/tweet_data/2019/2019.csv', index=False)
 
-# 
