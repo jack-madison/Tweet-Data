@@ -5,7 +5,10 @@ from asari.api import Sonar
 sonar = Sonar()
 
 # The following strings are samples to compare "cleaned up" tweets with uncleaned tweets
-sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…")
+sentiment1 = sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…")
+
+sentiment1['classes'][0]['confidence']
+
 sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…😵")
 sonar.ping(text="なんだかしんどいと思ったら気圧のせいか…(´+ω+｀)")
 sonar.ping(text="@mika_pollen_b なんだかしんどいと思ったら気圧のせいか…")

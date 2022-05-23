@@ -1,8 +1,14 @@
 import pandas as pd
 from cleantext import clean
 import re
+from asari.api import Sonar
 
-tweets = pd.read_csv('./all_tweets/tweet_data/2019/preprocessed_2019.csv', nrows=10000)
+# Initialize sonar
+sonar = Sonar()
+
+# skiprows=1000000, nrows=999999 skiprows = range(1, 1000001)
+
+tweets = pd.read_csv('./all_tweets/tweet_data/2019/preprocessed_2019.csv', nrows=5000000)
 
 tweets = tweets.drop(columns= 'Unnamed: 0')
 
@@ -40,10 +46,16 @@ kaomoji_list = ["^_^", "^ ^", "^–^", "＾＾", "(^^)", "(^ ^)", "(^.^)", "(^�
 punctuation_list = ["。", "、", "—", "–", "〜", "（", "）", "「", "」", "『", "』", "【", "】", "＜", "＞", "《", "》", "｛", "｝", "［", "］", "〔", "〕", "‘",
 "’", "“", "”", "...", "..", "！", "？"]
 
+tweets['tweet_text_negative_score'] = ""
 tweets['clean_tweet_text'] = ""
+tweets['clean_tweet_text_negative_score'] = ""
 
 for x in range(len(tweets)):
     tweet_text = tweets['tweet_text'][x]
+
+    sentiment1 = sonar.ping(tweet_text)
+
+    tweets['tweet_text_negative_score'][x] = sentiment1['classes'][0]['confidence']
 
     # Remove kaomoji from the tweet text
     for kaomoji in kaomoji_list:
@@ -62,9 +74,16 @@ for x in range(len(tweets)):
     for punctuation in punctuation_list:
         tweet_text = tweet_text.replace(punctuation, "")
 
+    # Remove any leftover URLs that may not have been picked up from the tweet text
+    tweet_text = re.sub('https[\w]+','', tweet_text)
+
     tweets['clean_tweet_text'][x] = str(tweet_text)
 
-    x
+    sentiment2 = sonar.ping(tweet_text)
 
-tweets.to_csv('./sentiment_analysis/sample_tweet_cleaning.csv', index = False)
+    tweets['clean_tweet_text_negative_score'][x] = sentiment2['classes'][0]['confidence']
+
+    print(x)
+
+tweets.to_csv('./tweets_clean_2019_1.csv', index = False)   
 
