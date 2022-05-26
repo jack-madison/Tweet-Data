@@ -36,9 +36,7 @@ keywords = ['42鯛', 'DV', 'SOS', 'zisatu', 'いじめ', 'いなくなりたい'
 '悩んでいる', '疲れ', '疲れた', '飛び降り', '病む', '病んだ', '不安', '不満', '不眠', '服毒', '暴力', '無気力', '無能', '命を絶つ', '迷惑かけたくない',
 '友だち つらそう', '友達がいない', '硫化水素', '劣等感', '練炭', '鬱', '鬱しにたい']
 
-keys = ['ドアノブ 首']
-
-for keyword in keys:
+for keyword in keywords:
     if token_no > 7: token_no = 0
 
     query_str = '"' + str(keyword) + '" -is:retweet -is:nullcast has:geo place_country:JP'
