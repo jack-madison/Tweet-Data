@@ -17,6 +17,8 @@ keywords = ['42鯛', 'DV', 'SOS', 'zisatu', 'いじめ', 'いなくなりたい'
 '悩んでいる', '疲れ', '疲れた', '飛び降り', '病む', '病んだ', '不安', '不満', '不眠', '服毒', '暴力', '無気力', '無能', '命を絶つ', '迷惑かけたくない',
 '友だち つらそう', '友達がいない', '硫化水素', '劣等感', '練炭', '鬱', '鬱しにたい']
 
+keywords_2 = ['自殺', 'じさつ', 'ジサツ']
+
 tweets = pd.DataFrame()
 
 keyword_count = []
@@ -40,4 +42,40 @@ counts.to_csv('./suicidal_tweets/keyword_counts.csv', index = False)
 
 tweets = tweets.drop_duplicates()
 
-tweets.to_csv('./suicidal_tweets/suicidal_tweets.csv', index = False)
+locations = pd.read_csv('./locations/matched_locations.csv')
+
+tweets = pd.merge(tweets, locations, how='left', on = 'tweet_location_id')
+
+tweets = tweets[tweets['mun_id'].notna()]
+tweets = tweets[(tweets['place_type'] != 'admin') & (tweets['place_type'] != 'country')]
+
+tweets['tweet_created_at'] = pd.to_datetime(tweets['tweet_created_at'])
+tweets['tweet_created_at'] = tweets['tweet_created_at'].dt.tz_convert('Japan')
+
+tweets.to_csv('./suicidal_tweets/alert_tweets_with_location.csv', index=False)
+
+tweets = tweets.reset_index(drop = True)
+
+tweets1 = tweets[(tweets.index >= 0) & (tweets.index <= 699999)]
+tweets2 = tweets[(tweets.index >= 700000) & (tweets.index <= 1399999)]
+tweets3 = tweets[(tweets.index >= 1400000) & (tweets.index <= 2099999)]
+tweets4 = tweets[(tweets.index >= 2100000) & (tweets.index <= 2799999)]
+tweets5 = tweets[(tweets.index >= 2800000) & (tweets.index <= 3499999)]
+tweets6 = tweets[(tweets.index >= 3500000) & (tweets.index <= 4199999)]
+tweets7 = tweets[(tweets.index >= 4200000) & (tweets.index <= 4899999)]
+tweets8 = tweets[(tweets.index >= 4900000) & (tweets.index <= 5599999)]
+tweets9 = tweets[(tweets.index >= 5600000) & (tweets.index <= 6299999)]
+tweets10 = tweets[(tweets.index >= 6300000) & (tweets.index <= 6999999)]
+
+tweets1.to_csv('./suicidal_tweets/alert_tweets_with_location1.csv', index=False)
+tweets2.to_csv('./suicidal_tweets/alert_tweets_with_location2.csv', index=False)
+tweets3.to_csv('./suicidal_tweets/alert_tweets_with_location3.csv', index=False)
+tweets4.to_csv('./suicidal_tweets/alert_tweets_with_location4.csv', index=False)
+tweets5.to_csv('./suicidal_tweets/alert_tweets_with_location5.csv', index=False)
+tweets6.to_csv('./suicidal_tweets/alert_tweets_with_location6.csv', index=False)
+tweets7.to_csv('./suicidal_tweets/alert_tweets_with_location7.csv', index=False)
+tweets8.to_csv('./suicidal_tweets/alert_tweets_with_location8.csv', index=False)
+tweets9.to_csv('./suicidal_tweets/alert_tweets_with_location9.csv', index=False)
+tweets10.to_csv('./suicidal_tweets/alert_tweets_with_location10.csv', index=False)
+
+
