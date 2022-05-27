@@ -38,6 +38,9 @@ for x in range(len(locations)):
 # Merge the mun_ids to the location data
 locations = pd.merge(locations, mun_ids, how = 'left', on = ['mun_X', 'mun_Y'])
 
+# Drop the mun_X, mun_Y, and missing_lat_lon variables
+locations = locations.drop(columns = ['mun_X', 'mun_Y', 'missing_lat_lon'])
+
 # For 19 of the location IDs, city names were provided by the API but no latitude or longitude. I have found these cities in the mun_list dataset and
 # manually set the mun_id variable below
 
@@ -62,7 +65,7 @@ locations.loc[(locations.tweet_location_id == '3c83aaf3b387003a'),'mun_id'] = 34
 locations.loc[(locations.tweet_location_id == '30712571d1d88380'),'mun_id'] = 271403
 
 # Merge the full municipality info with the locations based on mun_id
-locations = pd.merge(locations, municipalities_no_xy, how = 'left', on = 'mun_id')
+locations = pd.merge(locations, municipalities, how = 'left', on = 'mun_id')
 
 # Output to CSV
 locations.to_csv('./locations/matched_locations.csv', index = False)

@@ -67,9 +67,14 @@ sonar.ping(text="えーん。憂鬱だー？？？？？")
 sonar.ping(text="")
 
 
+import oseti 
+
+analyzer = oseti.Analyzer()
+
+analyzer.analyze('天国で待ってる。')
 
 
+analyzer.count_polarity('遅刻したけど楽しかったし嬉しかった。すごく充実した！')
 
 
-
-
+analyzer.analyze_detail('お金も希望もない！')
