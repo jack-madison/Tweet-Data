@@ -40,8 +40,6 @@ tweets = tweets[(tweets['place_type'] != 'admin') & (tweets['place_type'] != 'co
 tweets['tweet_created_at'] = pd.to_datetime(tweets['tweet_created_at'])
 tweets['tweet_created_at'] = tweets['tweet_created_at'].dt.tz_convert('Japan')
 
-tweets.to_csv('./alert_tweets/alert_tweets_with_location.csv', index=False)
-
 tweets = tweets.reset_index(drop = True)
 
 tweets1 = tweets[(tweets.index >= 0) & (tweets.index <= 699999)]
