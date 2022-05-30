@@ -5,23 +5,15 @@ keywords = ['ぼーっとする', '寝付けない', 'ねつけない', '寝れ�
 
 tweets = pd.DataFrame()
 
-keyword_count = []
-
 for keyword in keywords:
     keyword
     try:
         df = pd.read_csv('./cognition_tweets/cognition_keyword_tweets/' + str(keyword) + '_tweets.csv')
 
-        keyword_count.append({'keyword': keyword, 'count': len(df)})
-
         tweets = tweets.append(df)
     except:
         print("Error with " + str(keyword))
         
-        keyword_count.append({'keyword': keyword, 'count': 'error'})
-
-counts = pd.DataFrame(keyword_count)
-
 tweets = tweets.drop_duplicates()
 
 locations = pd.read_csv('./locations/matched_locations.csv')
