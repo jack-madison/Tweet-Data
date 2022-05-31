@@ -19,7 +19,7 @@ bearer_tokens = [bearer_token_1, bearer_token_2, bearer_token_3, bearer_token_4,
 token_no = 0
 
 # Create a list of keywords to search
-keywords = ['ぼーっとする', '寝付けない', 'ねつけない', '寝れない', 'ねれない', '眠れない', 'ねむれない']
+keywords = ['眠い', 'ねむい', '眠たい', 'ねむたい', '眠すぎる', 'ねむすぎる']
 
 for keyword in keywords:
     if token_no > 7: token_no = 0
@@ -68,7 +68,7 @@ for keyword in keywords:
     tweets = pd.DataFrame(result)
 
     # Save the tweets as a CSV
-    tweets.to_csv('./cognition_tweets/cognition_keyword_tweets/' + str(keyword) + '_tweets.csv', index = False)
+    tweets.to_csv('./cognition_sleepy_tweets/cognition_sleepy_keyword_tweets/' + str(keyword) + '_tweets.csv', index = False)
 
     token_no = token_no + 1
 

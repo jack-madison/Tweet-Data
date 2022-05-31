@@ -8,7 +8,7 @@ tweets = pd.DataFrame()
 for keyword in keywords:
     keyword
     try:
-        df = pd.read_csv('./cognition_tweets/cognition_keyword_tweets/' + str(keyword) + '_tweets.csv')
+        df = pd.read_csv('./cognition_sleepness_tweets/cognition_sleepness_keyword_tweets/' + str(keyword) + '_tweets.csv')
 
         tweets = tweets.append(df)
     except:
@@ -26,4 +26,4 @@ tweets = tweets[(tweets['place_type'] != 'admin') & (tweets['place_type'] != 'co
 tweets['tweet_created_at'] = pd.to_datetime(tweets['tweet_created_at'])
 tweets['tweet_created_at'] = tweets['tweet_created_at'].dt.tz_convert('Japan')
 
-tweets.to_csv('./cognition_tweets/cognition_tweets_with_locations.csv', index=False)
+tweets.to_csv('./cognition_sleepness_tweets/cognition_sleepness_tweets_with_locations.csv', index=False)
