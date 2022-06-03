@@ -19,9 +19,9 @@ bearer_tokens = [bearer_token_1, bearer_token_2, bearer_token_3, bearer_token_4,
 token_no = 0
 
 # Create a list of keywords to search
-keywords = ['花粉症の薬', '花粉症薬', 'アレジオン', 'エバステル', 'ジルテック', 'タリオン', 'アレグラ', 'アレロック', 'クラリチン', 'ザイザル', 'ビラノア',
-'デザレックス', 'ルパフィン', 'ディレグラ', 'エピナスチン', 'エバスチン', 'セチリジン', 'ベポタスチン', 'フェキソフェナジン', 'オロパタジン', 'ロラタジン',
-'レボセチリジン', 'ビラスチン', 'デスロラタジン', 'ルパタジン']
+keywords = ['睡眠薬', 'マイスリー', 'アモバン', 'ルネスタ', 'ハルシオン', 'レンドルミン', 'ドラール', 'ベルソムラ', 'ロゼレム', 'デジレル', 'エパミール',
+'リスミー', 'ミオナール', 'サイレース', 'ゾルピデム', 'ゾピクロン', 'エスゾピクロン', 'トリアゾラム', 'ブロチゾラム', 'クアゼパム', 'スボレキサント',
+'ラメルテオン', 'トラゾドン', 'ロルメタゼパム', 'リルマザホン', 'エペリゾン', 'フルニトラゼパ']
 
 for keyword in keywords:
     if token_no > 7: token_no = 0
@@ -70,7 +70,7 @@ for keyword in keywords:
     tweets = pd.DataFrame(result)
 
     # Save the tweets as a CSV
-    tweets.to_csv('./medication_tweets/medication_keyword_tweets/' + str(keyword) + '_tweets.csv', index = False)
+    tweets.to_csv('./sleepingdrugs_tweets/sleepingdrugs_keyword_tweets/' + str(keyword) + '_tweets.csv', index = False)
 
     token_no = token_no + 1
 
