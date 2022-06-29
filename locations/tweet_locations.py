@@ -13,7 +13,7 @@ from twitter_authentication import bearer_token_7
 from twitter_authentication import bearer_token_8
 
 # Read in the CSV of tweets
-tweets = pd.read_csv('https://media.githubusercontent.com/media/jack-madison/Twitter-Sentiment-Analysis/main/1_tweets_raw/2018/03_2018.csv')
+tweets = pd.read_csv('https://media.githubusercontent.com/media/jack-madison/Twitter-Sentiment-Analysis/main/1_tweets_raw/2018/04_2018.csv')
 
 # Read in the dataframe of locations already collected
 locations = pd.read_csv('./locations/locations.csv')
